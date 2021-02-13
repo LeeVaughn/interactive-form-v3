@@ -1,4 +1,5 @@
 // set the focus state on the Name field when the app loads
+document.getElementById("name").focus();
 
 // hide the Job Role text field
 
