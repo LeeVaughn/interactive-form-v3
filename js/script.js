@@ -5,6 +5,7 @@ document.getElementById("name").focus();
 document.getElementById("other-job-role").hidden = true;
 
 // show Credit Card as the selected method of payment when the app loads
+document.getElementById("payment").selectedIndex = "1";
 
 // create an event listener for the Job Role dropdown
   // show the text field when "other" is selected, otherwise hide it
