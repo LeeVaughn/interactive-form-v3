@@ -2,6 +2,7 @@
 document.getElementById("name").focus();
 
 // hide the Job Role text field
+document.getElementById("other-job-role").hidden = true;
 
 // show Credit Card as the selected method of payment when the app loads
 
