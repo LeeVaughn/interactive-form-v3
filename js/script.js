@@ -8,6 +8,7 @@ document.getElementById("other-job-role").hidden = true;
 document.querySelector("option[value='credit-card']").selected = "true"
 
 // disable the Color element
+document.getElementById("color").disabled = true
 
 // create an event listener for the Job Role dropdown
 document.getElementById("title").addEventListener("change", (e) => {
