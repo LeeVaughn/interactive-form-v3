@@ -5,10 +5,10 @@ document.getElementById("name").focus();
 document.getElementById("other-job-role").hidden = true;
 
 // show Credit Card as the selected method of payment when the app loads
-document.querySelector("option[value='credit-card']").selected = "true"
+document.querySelector("option[value='credit-card']").selected = "true";
 
 // disable the Color element
-document.getElementById("color").disabled = true
+document.getElementById("color").disabled = true;
 
 // create an event listener for the Job Role dropdown
 document.getElementById("title").addEventListener("change", (e) => {
@@ -20,9 +20,45 @@ document.getElementById("title").addEventListener("change", (e) => {
 });
 
 // create an event listener for the Design dropdown
+document.getElementById("design").addEventListener("change", (e) => {
+  document.getElementById("color").disabled = false;
+  // hide all colors
+  document.querySelectorAll("option[data-theme]").forEach(function(element, i) {
+    element.hidden = true;
+    console.log(element)
+    if (document.querySelector("option[value='js puns']").selected === true) {
+      if (element.dataset.theme === "js puns") {
+        // document.querySelectorAll("option[data-theme]").selectedIndex = "0";
+        element.hidden = false
+      }
+    }
+
+    if (document.querySelector("option[value='heart js']").selected === true) {
+      if (element.dataset.theme === "heart js") {
+        // document.querySelectorAll("option[data-theme]").selectedIndex = "0";
+        element.hidden = false
+      }
+    }
+  });
+
+  // if (document.querySelector("option[value='js puns']").selected === true) {
+  //   document.querySelectorAll("option[data-theme]").forEach( function(element) {
+  //     if (element.dataset.theme === "js puns") {
+  //       element.hidden = false
+  //     }
+  //   });
+  // }
+  // if (document.querySelector("option[value='heart js']").selected === true) {
+  //   document.querySelectorAll("option[data-theme]").forEach( function(element) {
+  //     if (element.dataset.theme === "heart js") {
+  //       element.hidden = false
+  //     }
+  //   });
+  // }
   // hide all colors
   // when JS Puns is selected, show JS Pun colors
   // when I <3 JS is selected, show I <3 JS colors
+});
 
 // create an event listener for the Activities section
   // update the cost when an activity is checked or unchecked
