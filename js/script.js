@@ -1,7 +1,7 @@
 // set the focus state on the Name field when the app loads
 document.getElementById("name").focus();
 
-// hide the Job Role text field
+// hide the Job Role text field when app loads
 document.getElementById("other-job-role").hidden = true;
 
 // show Credit Card as the selected method of payment when the app loads
@@ -11,7 +11,8 @@ document.querySelector("option[value='credit-card']").selected = "true";
 document.getElementById("color").disabled = true;
 
 // create an event listener for the Job Role dropdown
-document.getElementById("title").addEventListener("change", (e) => {
+document.getElementById("title").addEventListener("change", () => {
+  // hide text field initially
   document.getElementById("other-job-role").hidden = true;
   // show the text field when "other" is selected
   if (document.querySelector("option[value='other']").selected === true) {
@@ -20,15 +21,17 @@ document.getElementById("title").addEventListener("change", (e) => {
 });
 
 // create an event listener for the Design dropdown
-document.getElementById("design").addEventListener("change", (e) => {
+document.getElementById("design").addEventListener("change", () => {
   const colorDropdown = document.getElementById("color");
 
+  // enable first option, set the text content, and select it
   colorDropdown.disabled = false;
   colorDropdown[0].textContent = "Please select a color"
   colorDropdown[0].selected = "true"
 
-  document.querySelectorAll("option[data-theme]").forEach(function(element) {
-    // hide all colors
+  // show available colors based on the selected Design
+  document.querySelectorAll("option[data-theme]").forEach((element) => {
+    // hide all colors initially
     element.hidden = true;
 
     if (document.querySelector("option[value='js puns']").selected === true) {
@@ -43,24 +46,6 @@ document.getElementById("design").addEventListener("change", (e) => {
       }
     }
   });
-
-  // if (document.querySelector("option[value='js puns']").selected === true) {
-  //   document.querySelectorAll("option[data-theme]").forEach( function(element) {
-  //     if (element.dataset.theme === "js puns") {
-  //       element.hidden = false
-  //     }
-  //   });
-  // }
-  // if (document.querySelector("option[value='heart js']").selected === true) {
-  //   document.querySelectorAll("option[data-theme]").forEach( function(element) {
-  //     if (element.dataset.theme === "heart js") {
-  //       element.hidden = false
-  //     }
-  //   });
-  // }
-  // hide all colors
-  // when JS Puns is selected, show JS Pun colors
-  // when I <3 JS is selected, show I <3 JS colors
 });
 
 // create an event listener for the Activities section
