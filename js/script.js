@@ -21,22 +21,25 @@ document.getElementById("title").addEventListener("change", (e) => {
 
 // create an event listener for the Design dropdown
 document.getElementById("design").addEventListener("change", (e) => {
-  document.getElementById("color").disabled = false;
-  // hide all colors
-  document.querySelectorAll("option[data-theme]").forEach(function(element, i) {
+  const colorDropdown = document.getElementById("color");
+
+  colorDropdown.disabled = false;
+  colorDropdown[0].textContent = "Please select a color"
+  colorDropdown[0].selected = "true"
+
+  document.querySelectorAll("option[data-theme]").forEach(function(element) {
+    // hide all colors
     element.hidden = true;
-    console.log(element)
+
     if (document.querySelector("option[value='js puns']").selected === true) {
       if (element.dataset.theme === "js puns") {
-        // document.querySelectorAll("option[data-theme]").selectedIndex = "0";
-        element.hidden = false
+        element.hidden = false;
       }
     }
 
     if (document.querySelector("option[value='heart js']").selected === true) {
       if (element.dataset.theme === "heart js") {
-        // document.querySelectorAll("option[data-theme]").selectedIndex = "0";
-        element.hidden = false
+        element.hidden = false;
       }
     }
   });
