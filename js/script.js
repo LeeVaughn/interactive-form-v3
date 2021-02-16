@@ -7,6 +7,10 @@ document.getElementById("other-job-role").hidden = true;
 // show Credit Card as the selected method of payment when the app loads
 document.querySelector("option[value='credit-card']").selected = "true";
 
+// hide PayPal and Bitcoin info when the app loads
+document.getElementById("paypal").style.display = "none";
+document.getElementById("bitcoin").style.display = "none";
+
 // disable the Color element
 document.getElementById("color").disabled = true;
 
@@ -56,6 +60,9 @@ document.getElementById("design").addEventListener("change", () => {
 // show Credit Card as the selected method of payment when the app loads
 
 // create an event listener for the Payment section
+document.getElementById("payment").addEventListener("change", () => {
+  console.log("payment")
+});
   // hide all payment info
   // if CC is selected, shows CC info
   // if PayPal is selected, show PayPal info
