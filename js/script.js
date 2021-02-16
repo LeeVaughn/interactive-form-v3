@@ -61,14 +61,25 @@ document.getElementById("design").addEventListener("change", () => {
 
 // create an event listener for the Payment section
 document.getElementById("payment").addEventListener("change", () => {
-  console.log("payment")
-});
-  // hide all payment info
-  // if CC is selected, shows CC info
-  // if PayPal is selected, show PayPal info
-  // if Bitcoin is selected, show Bitcoin info
+  // hide all payment info initially
+  document.getElementById("credit-card").style.display = "none";
+  document.getElementById("paypal").style.display = "none";
+  document.getElementById("bitcoin").style.display = "none";
+
+  // show appropriate payment info based on selected method
+  if (document.querySelector("option[value='credit-card']").selected === true) {
+    document.getElementById("credit-card").style.display = "";
+  }
+  if (document.querySelector("option[value='paypal']").selected === true) {
+    document.getElementById("paypal").style.display = "";
+  }
+  if (document.querySelector("option[value='bitcoin']").selected === true) {
+    document.getElementById("bitcoin").style.display = "";
+  }
+
   // add at least one real time validation (exceeds)
   // add at least one conditional error message (exceeds)
+});
 
 // add validations
   // name cannot be blank
