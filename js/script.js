@@ -53,11 +53,12 @@ document.getElementById("design").addEventListener("change", () => {
 });
 
 // create an event listener for the Activities section
+document.getElementById("activities").addEventListener("change", () => {
+  console.log("activities")
   // update the cost when an activity is checked or unchecked
   // prevent the user from selecting overlapping activities (exceeds)
   // add focus to the activities when the user tabs through the form
-
-// show Credit Card as the selected method of payment when the app loads
+});
 
 // create an event listener for the Payment section
 document.getElementById("payment").addEventListener("change", () => {
