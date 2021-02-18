@@ -53,9 +53,20 @@ document.getElementById("design").addEventListener("change", () => {
 });
 
 // create an event listener for the Activities section
-document.getElementById("activities").addEventListener("change", () => {
-  console.log("activities")
+document.getElementById("activities").addEventListener("change", (e) => {
+  const activities = document.querySelectorAll("input[type='checkbox']");
+  const costDisplay = document.getElementById("activities-cost");
+  let cost = 0;
+
   // update the cost when an activity is checked or unchecked
+  activities.forEach((activity) => {
+    if (activity.checked === true) {
+      cost += parseInt(activity.dataset.cost);
+    }
+  });
+
+  costDisplay.textContent = `Total: $${cost}`;
+
   // prevent the user from selecting overlapping activities (exceeds)
   // add focus to the activities when the user tabs through the form
 });
