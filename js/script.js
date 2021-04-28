@@ -94,13 +94,17 @@ document.getElementById("payment").addEventListener("change", () => {
 });
 
 // add validations
-  // name cannot be blank
-  // email must contain valid address
-  // at least one activity must be selected
-  // if credit card is the selected method of payment
-    // card number must be a number between 13 and 16 digits
-    // zip code must be a five digit number
-    // cvv must be a three digit number
+// name cannot be blank
+// email must contain valid address
+// at least one activity must be selected
+// if credit card is the selected method of payment
+  // card number must be a number between 13 and 16 digits
+  // zip code must be a five digit number
+  // cvv must be a three digit number
 
 // create an event listener for the Register button
+document.querySelector("form").addEventListener("submit", (e) => {
   // when there are validation errors the form should be prevented from submitting
+  e.preventDefault();
+  console.log("submit");
+});
