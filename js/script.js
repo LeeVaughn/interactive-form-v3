@@ -95,6 +95,15 @@ document.getElementById("payment").addEventListener("change", () => {
 
 // add validations
 // name cannot be blank
+function validateName() {
+  const nameValue = document.getElementById("name").value;
+  
+  if (nameValue === "") {
+    return false;
+  } else {
+    return true;
+  }
+}
 // email must contain valid address
 // at least one activity must be selected
 // if credit card is the selected method of payment
@@ -105,6 +114,9 @@ document.getElementById("payment").addEventListener("change", () => {
 // create an event listener for the Register button
 document.querySelector("form").addEventListener("submit", (e) => {
   // when there are validation errors the form should be prevented from submitting
-  e.preventDefault();
+  // e.preventDefault();
+  if (!validateName()) {
+    e.preventDefault();
+  };
   console.log("submit");
 });
