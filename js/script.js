@@ -99,6 +99,7 @@ function validateName() {
   const nameValue = document.getElementById("name").value;
   
   if (nameValue === "") {
+    console.log("Name invalid")
     return false;
   } else {
     return true;
