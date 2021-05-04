@@ -109,8 +109,7 @@ function validateName(e) {
 // email must contain valid address
 function validateEmail(e) {
   const emailValue = document.getElementById("email").value;
-  // regex from http://emailregex.com/
-  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  const regex = /^\S+@\S+\.\S+$/
   
   if (!regex.test(emailValue)) {
     console.log("Email invalid");
@@ -130,6 +129,6 @@ function validateEmail(e) {
 document.querySelector("form").addEventListener("submit", (e) => {
   // when there are validation errors the form should be prevented from submitting
   // e.preventDefault();
-  validateName(e)
-  validateEmail(e)
+  validateName(e);
+  validateEmail(e);
 });
