@@ -95,17 +95,31 @@ document.getElementById("payment").addEventListener("change", () => {
 
 // add validations
 // name cannot be blank
-function validateName() {
+function validateName(e) {
   const nameValue = document.getElementById("name").value;
   
   if (nameValue === "") {
-    console.log("Name invalid")
+    console.log("Name invalid");
+    e.preventDefault();
     return false;
   } else {
     return true;
   }
 }
 // email must contain valid address
+function validateEmail(e) {
+  const emailValue = document.getElementById("email").value;
+  // regex from http://emailregex.com/
+  const regex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+  
+  if (!regex.test(emailValue)) {
+    console.log("Email invalid");
+    e.preventDefault();
+    return false;
+  } else {
+    return true;
+  }
+}
 // at least one activity must be selected
 // if credit card is the selected method of payment
   // card number must be a number between 13 and 16 digits
@@ -116,8 +130,6 @@ function validateName() {
 document.querySelector("form").addEventListener("submit", (e) => {
   // when there are validation errors the form should be prevented from submitting
   // e.preventDefault();
-  if (!validateName()) {
-    e.preventDefault();
-  };
-  console.log("submit");
+  validateName(e)
+  validateEmail(e)
 });
