@@ -120,6 +120,17 @@ function validateEmail(e) {
   }
 }
 // at least one activity must be selected
+function validateActivities(e) {
+  const costDisplay = document.getElementById("activities-cost").innerHTML;
+
+  if (+costDisplay.slice(8,11) === 0) {
+    console.log("Activities invalid");
+    e.preventDefault();
+    return false;
+  } else {
+    return true;
+  }
+}
 // if credit card is the selected method of payment
   // card number must be a number between 13 and 16 digits
   // zip code must be a five digit number
@@ -131,4 +142,5 @@ document.querySelector("form").addEventListener("submit", (e) => {
   // e.preventDefault();
   validateName(e);
   validateEmail(e);
+  validateActivities(e);
 });
