@@ -131,10 +131,21 @@ function validateActivities(e) {
     return true;
   }
 }
-// if credit card is the selected method of payment
-  // card number must be a number between 13 and 16 digits
-  // zip code must be a five digit number
-  // cvv must be a three digit number
+// card number must be a number between 13 and 16 digits
+function validateCardNum(e) {
+  const cardNumValue = document.getElementById("cc-num").value;
+  console.log(cardNumValue.length);
+
+  if (isNaN(cardNumValue) || cardNumValue.length < 13 || cardNumValue.length > 16) {
+    console.log("Card Number invalid");
+    e.preventDefault();
+    return false;
+  } else {
+    return true;
+  }
+}
+// zip code must be a five digit number
+// cvv must be a three digit number
 
 // create an event listener for the Register button
 document.querySelector("form").addEventListener("submit", (e) => {
@@ -143,4 +154,8 @@ document.querySelector("form").addEventListener("submit", (e) => {
   validateName(e);
   validateEmail(e);
   validateActivities(e);
+  // if credit card is the selected method of payment
+  if (document.querySelector("option[value='credit-card']").selected === true) {
+    validateCardNum(e);
+  }
 });
