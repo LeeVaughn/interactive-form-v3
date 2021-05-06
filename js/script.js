@@ -156,6 +156,17 @@ function validateZip(e) {
   }
 }
 // cvv must be a three digit number
+function validateCVV(e) {
+  const cvvValue = document.getElementById("cvv").value;
+
+  if (isNaN(cvvValue) || cvvValue.length !== 3) {
+    console.log("CVV invalid");
+    e.preventDefault();
+    return false;
+  } else {
+    return true;
+  }
+}
 
 // create an event listener for the Register button
 document.querySelector("form").addEventListener("submit", (e) => {
@@ -168,5 +179,6 @@ document.querySelector("form").addEventListener("submit", (e) => {
   if (document.querySelector("option[value='credit-card']").selected === true) {
     validateCardNum(e);
     validateZip(e);
+    validateCVV(e);
   }
 });
