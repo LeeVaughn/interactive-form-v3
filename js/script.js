@@ -133,10 +133,9 @@ function validateActivities(e) {
 }
 // card number must be a number between 13 and 16 digits
 function validateCardNum(e) {
-  const cardNumValue = document.getElementById("cc-num").value;
-  console.log(cardNumValue.length);
+  const ccNumValue = document.getElementById("cc-num").value;
 
-  if (isNaN(cardNumValue) || cardNumValue.length < 13 || cardNumValue.length > 16) {
+  if (isNaN(ccNumValue) || ccNumValue.length < 13 || ccNumValue.length > 16) {
     console.log("Card Number invalid");
     e.preventDefault();
     return false;
@@ -145,6 +144,17 @@ function validateCardNum(e) {
   }
 }
 // zip code must be a five digit number
+function validateZip(e) {
+  const zipValue = document.getElementById("zip").value;
+
+  if (isNaN(zipValue) || zipValue.length !== 5) {
+    console.log("Zip Code invalid");
+    e.preventDefault();
+    return false;
+  } else {
+    return true;
+  }
+}
 // cvv must be a three digit number
 
 // create an event listener for the Register button
@@ -157,5 +167,6 @@ document.querySelector("form").addEventListener("submit", (e) => {
   // if credit card is the selected method of payment
   if (document.querySelector("option[value='credit-card']").selected === true) {
     validateCardNum(e);
+    validateZip(e);
   }
 });
