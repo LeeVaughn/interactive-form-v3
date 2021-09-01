@@ -101,17 +101,17 @@ function validateName(e) {
   
   if (nameValue === "") {
     console.log("Name invalid");
-    addNotValidClass("name");
+    addNotValidClass("[for=name]");
     e.preventDefault();
     return false;
   } else {
-    addValidClass("name");
+    addValidClass("[for=name]");
     return true;
   }
 }
 
 /**
- * Validates that the Email field is a valid email and prevents form submission if it isn't
+ * Validates that the Email field is a valid email address and prevents form submission if it isn't
  * @param {object} e - the event object
  * @return {boolean} based on if input is valid or not
  */
@@ -121,23 +121,30 @@ function validateEmail(e) {
   
   if (!regex.test(emailValue)) {
     console.log("Email invalid");
-    addNotValidClass("email");
+    addNotValidClass("[for=email]");
     e.preventDefault();
     return false;
   } else {
-    addValidClass("email");
+    addValidClass("[for=email]");
     return true;
   }
 }
-// at least one activity must be selected
+
+/**
+ * Validates that at least on Activity is selected and prevents form submission if it isn't
+ * @param {object} e - the event object
+ * @return {boolean} based on if input is valid or not
+ */
 function validateActivities(e) {
   const costDisplay = document.getElementById("activities-cost").innerHTML;
 
   if (+costDisplay.slice(8,11) === 0) {
     console.log("Activities invalid");
+    addNotValidClass("#activities");
     e.preventDefault();
     return false;
   } else {
+    addValidClass("#activities");
     return true;
   }
 }
@@ -181,10 +188,10 @@ function validateCVV(e) {
 /**
  * Adds the "valid" class to an element, removes the "not-valid" class
  *
- * @param {string} attrName - the for attribute value of the element to be selected
+ * @param {string} element - the for attribute value of the element to be selected
  */
-function addValidClass(attrName) {
-  const targetEle = document.querySelector(`[for=${attrName}]`);
+function addValidClass(element) {
+  const targetEle = document.querySelector(element);
 
   targetEle.classList.remove("not-valid");
   targetEle.classList.add("valid");
@@ -192,12 +199,15 @@ function addValidClass(attrName) {
 
 
 /**
- * Adds the "not-valid" class to an element
+ * Adds the "not-valid" class to an element, removes the "valid" class
  *
- * @param {string} attrName - the for attribute value of the element to be selected
+ * @param {string} element - the for attribute value of the element to be selected
  */
-function addNotValidClass(attrName) {
-  document.querySelector(`[for=${attrName}]`).classList.add("not-valid");
+function addNotValidClass(element) {
+  const targetEle = document.querySelector(element);
+
+  targetEle.classList.remove("valid");
+  targetEle.classList.add("not-valid");
 }
 
 // create an event listener for the Register button
