@@ -53,7 +53,7 @@ document.getElementById("design").addEventListener("change", () => {
 });
 
 // create an event listener for the Activities section
-document.getElementById("activities").addEventListener("change", (e) => {
+document.getElementById("activities").addEventListener("change", () => {
   const activities = document.querySelectorAll("input[type='checkbox']");
   const costDisplay = document.getElementById("activities-cost");
   let cost = 0;
@@ -66,9 +66,17 @@ document.getElementById("activities").addEventListener("change", (e) => {
   });
 
   costDisplay.textContent = `Total: $${cost}`;
+});
 
+// loop over Activities and add the "focus" class to the parent element of the activity with focus to improve accessability
+document.querySelectorAll("input[type='checkbox']").forEach((activity) => {
+  activity.addEventListener("focus", (e) => {
+    activity.parentElement.classList.add("focus");
+  });
 
-  //TODO add focus to the activities when the user tabs through the form
+  activity.addEventListener("blur", (e) => {
+    activity.parentElement.classList.remove("focus");
+  });
 });
 
 // create an event listener for the Payment section
@@ -238,12 +246,11 @@ function addNotValidClass(element) {
 
 // create an event listener for the Register button
 document.querySelector("form").addEventListener("submit", (e) => {
-  // when there are validation errors the form should be prevented from submitting
-  // e.preventDefault();
+  // if any of these functions return false the form will be prevented from submitting
   validateName(e);
   validateEmail(e);
   validateActivities(e);
-  // if credit card is the selected method of payment
+
   if (document.querySelector("option[value='credit-card']").selected === true) {
     validateCardNum(e);
     validateZip(e);
