@@ -67,8 +67,8 @@ document.getElementById("activities").addEventListener("change", (e) => {
 
   costDisplay.textContent = `Total: $${cost}`;
 
-  // prevent the user from selecting overlapping activities (exceeds)
-  // add focus to the activities when the user tabs through the form
+
+  //TODO add focus to the activities when the user tabs through the form
 });
 
 // create an event listener for the Payment section
@@ -88,21 +88,25 @@ document.getElementById("payment").addEventListener("change", () => {
   if (document.querySelector("option[value='bitcoin']").selected === true) {
     document.getElementById("bitcoin").style.display = "";
   }
-
-  // add at least one real time validation (exceeds)
-  // add at least one conditional error message (exceeds)
 });
 
-// add validations
-// name cannot be blank
+//TODO add validations
+/**
+ * Validates that the Name field is not blank and prevents form submission if it is
+ * @param {object} e - the event object
+ * @return {boolean} based on if input is valid or not
+ */
 function validateName(e) {
+  console.log(typeof e)
   const nameValue = document.getElementById("name").value;
   
   if (nameValue === "") {
     console.log("Name invalid");
+    addNotValidClass("name");
     e.preventDefault();
     return false;
   } else {
+    addValidClass("name");
     return true;
   }
 }
@@ -166,6 +170,28 @@ function validateCVV(e) {
   } else {
     return true;
   }
+}
+
+/**
+ * Adds the "valid" class to an element, removes the "not-valid" class
+ *
+ * @param {string} attrName - the for attribute value of the element to be selected
+ */
+function addValidClass(attrName) {
+  const targetEle = document.querySelector(`[for=${attrName}]`);
+
+  targetEle.classList.remove("not-valid");
+  targetEle.classList.add("valid");
+}
+
+
+/**
+ * Adds the "not-valid" class to an element
+ *
+ * @param {string} attrName - the for attribute value of the element to be selected
+ */
+function addNotValidClass(attrName) {
+  document.querySelector(`[for=${attrName}]`).classList.add("not-valid");
 }
 
 // create an event listener for the Register button
