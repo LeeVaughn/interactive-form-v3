@@ -93,6 +93,7 @@ document.getElementById("payment").addEventListener("change", () => {
 //TODO add validations
 /**
  * Validates that the Name field is not blank and prevents form submission if it is
+ * 
  * @param {object} e - the event object
  * @return {boolean} based on if input is valid or not
  */
@@ -112,6 +113,7 @@ function validateName(e) {
 
 /**
  * Validates that the Email field is a valid email address and prevents form submission if it isn't
+ * 
  * @param {object} e - the event object
  * @return {boolean} based on if input is valid or not
  */
@@ -132,6 +134,7 @@ function validateEmail(e) {
 
 /**
  * Validates that at least on Activity is selected and prevents form submission if it isn't
+ * 
  * @param {object} e - the event object
  * @return {boolean} based on if input is valid or not
  */
@@ -148,15 +151,23 @@ function validateActivities(e) {
     return true;
   }
 }
-// card number must be a number between 13 and 16 digits
+
+/**
+ * Validates that Card Number is between 13 and 16 digits and prevents form submission if it isn't
+ * 
+ * @param {object} e - the event object
+ * @return {boolean} based on if input is valid or not
+ */
 function validateCardNum(e) {
   const ccNumValue = document.getElementById("cc-num").value;
 
   if (isNaN(ccNumValue) || ccNumValue.length < 13 || ccNumValue.length > 16) {
     console.log("Card Number invalid");
+    addNotValidClass("[for=cc-num]");
     e.preventDefault();
     return false;
   } else {
+    addValidClass("[for=cc-num]");
     return true;
   }
 }
