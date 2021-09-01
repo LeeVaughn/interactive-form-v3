@@ -97,7 +97,6 @@ document.getElementById("payment").addEventListener("change", () => {
  * @return {boolean} based on if input is valid or not
  */
 function validateName(e) {
-  console.log(typeof e)
   const nameValue = document.getElementById("name").value;
   
   if (nameValue === "") {
@@ -110,16 +109,23 @@ function validateName(e) {
     return true;
   }
 }
-// email must contain valid address
+
+/**
+ * Validates that the Email field is a valid email and prevents form submission if it isn't
+ * @param {object} e - the event object
+ * @return {boolean} based on if input is valid or not
+ */
 function validateEmail(e) {
   const emailValue = document.getElementById("email").value;
   const regex = /^\S+@\S+\.\S+$/
   
   if (!regex.test(emailValue)) {
     console.log("Email invalid");
+    addNotValidClass("email");
     e.preventDefault();
     return false;
   } else {
+    addValidClass("email");
     return true;
   }
 }
