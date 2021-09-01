@@ -90,7 +90,6 @@ document.getElementById("payment").addEventListener("change", () => {
   }
 });
 
-//TODO add validations
 /**
  * Validates that the Name field is not blank and prevents form submission if it is
  * 
@@ -171,27 +170,43 @@ function validateCardNum(e) {
     return true;
   }
 }
-// zip code must be a five digit number
+
+/**
+ * Validates that Zip Code is a five digit number and prevents form submission if it isn't
+ * 
+ * @param {object} e - the event object
+ * @return {boolean} based on if input is valid or not
+ */
 function validateZip(e) {
   const zipValue = document.getElementById("zip").value;
 
   if (isNaN(zipValue) || zipValue.length !== 5) {
     console.log("Zip Code invalid");
+    addNotValidClass("[for=zip]");
     e.preventDefault();
     return false;
   } else {
+    addValidClass("[for=zip]");
     return true;
   }
 }
-// cvv must be a three digit number
+
+/**
+ * Validates that CVV is a three digit number and prevents form submission if it isn't
+ * 
+ * @param {object} e - the event object
+ * @return {boolean} based on if input is valid or not
+ */
 function validateCVV(e) {
   const cvvValue = document.getElementById("cvv").value;
 
   if (isNaN(cvvValue) || cvvValue.length !== 3) {
     console.log("CVV invalid");
+    addNotValidClass("[for=cvv]");
     e.preventDefault();
     return false;
   } else {
+    addValidClass("[for=cvv]");
     return true;
   }
 }
