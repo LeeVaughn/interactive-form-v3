@@ -1,20 +1,12 @@
-// set the focus state on the Name field when the app loads
+//* initial functionality when the app loads
 document.getElementById("name").focus();
-
-// hide the Job Role text field when app loads
 document.getElementById("other-job-role").hidden = true;
-
-// show Credit Card as the selected method of payment when the app loads
 document.querySelector("option[value='credit-card']").selected = "true";
-
-// hide PayPal and Bitcoin info when the app loads
 document.getElementById("paypal").style.display = "none";
 document.getElementById("bitcoin").style.display = "none";
-
-// disable the Color element
 document.getElementById("color").disabled = true;
 
-// create an event listener for the Job Role dropdown
+//* change event listeners for the various input fields
 document.getElementById("title").addEventListener("change", () => {
   // hide text field initially
   document.getElementById("other-job-role").hidden = true;
@@ -24,7 +16,6 @@ document.getElementById("title").addEventListener("change", () => {
   }
 });
 
-// create an event listener for the Design dropdown
 document.getElementById("design").addEventListener("change", () => {
   const colorDropdown = document.getElementById("color");
 
@@ -52,7 +43,6 @@ document.getElementById("design").addEventListener("change", () => {
   });
 });
 
-// create an event listener for the Activities section
 document.getElementById("activities").addEventListener("change", () => {
   const activities = document.querySelectorAll("input[type='checkbox']");
   const costDisplay = document.getElementById("activities-cost");
@@ -79,7 +69,6 @@ document.querySelectorAll("input[type='checkbox']").forEach((activity) => {
   });
 });
 
-// create an event listener for the Payment section
 document.getElementById("payment").addEventListener("change", () => {
   // hide all payment info initially
   document.getElementById("credit-card").style.display = "none";
@@ -98,6 +87,7 @@ document.getElementById("payment").addEventListener("change", () => {
   }
 });
 
+//* form validations
 /**
  * Validates that the Name field is not blank and prevents form submission if it is
  * 
@@ -244,7 +234,7 @@ function addNotValidClass(element) {
   targetEle.classList.add("not-valid");
 }
 
-// create an event listener for the Register button
+//* submit event listener on the form itself
 document.querySelector("form").addEventListener("submit", (e) => {
   // if any of these functions return false the form will be prevented from submitting
   validateName(e);
