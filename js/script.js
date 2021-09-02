@@ -211,27 +211,42 @@ function validateCVV(e) {
 
 /**
  * Adds the "valid" class to an element, removes the "not-valid" class
+ * Makes sure the error hint is hidden
  *
  * @param {string} element - the for attribute value of the element to be selected
  */
 function addValidClass(element) {
   const targetEle = document.querySelector(element);
+  const targetSpan = document.querySelector(element + " .hint");
 
   targetEle.classList.remove("not-valid");
   targetEle.classList.add("valid");
+  targetSpan.style.display = "none";
 }
 
 
 /**
  * Adds the "not-valid" class to an element, removes the "valid" class
+ * Makes sure the error hint is shown
  *
  * @param {string} element - the for attribute value of the element to be selected
  */
 function addNotValidClass(element) {
   const targetEle = document.querySelector(element);
+  const targetSpan = document.querySelector(element + " .hint");
 
   targetEle.classList.remove("valid");
   targetEle.classList.add("not-valid");
+  targetSpan.style.display = "block";
+}
+
+/**
+ * Shows or hides the hint for an input as needed
+ *
+ * @param {string} eleId - part of the id for the label associated with an input
+ */
+function toggleHint(eleId) {
+
 }
 
 //* submit event listener on the form itself
